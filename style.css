@@ -1,0 +1,342 @@
+
+
+/* basic */
+/* header */
+
+header{
+    height: 3rem;
+    background-image: linear-gradient(135deg,  #1a1a1a,  #333333);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    border-bottom: #35adf3 2px solid;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+nav{
+
+}
+nav button{
+    /* 35adf3 */
+    /* background-image: linear-gradient(45deg,  #55b2e7,  #29a1e7d5); */
+    font-size: 1.3rem;
+    padding: .3rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    border: #102a3a 3px solid;
+    transition: .1s linear;
+}
+nav button:hover{
+    /* background-image: linear-gradient(45deg,  #5d9dc2,  #3391c7d5); */
+    background: #88d1fc;
+
+}
+
+/* main */
+
+
+main {
+    /* height: auto; */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-image: linear-gradient(45deg,  #fdfdfd,  #dbdbdb);
+    /* background: red; */
+    padding: 1.2rem;
+    gap: 3rem;
+}
+
+
+.injazBox{
+    min-height: 15rem;
+    /* background: red; */
+    gap: 1rem;
+    margin: 1rem;
+    border: #292929 1px dashed;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.733);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.injazBox>h2{
+    padding: .3rem;
+    display: inline-block;
+    margin: auto;
+    border-radius: .3rem;
+    transition: .1s linear;
+}
+
+
+.projects{
+    display: flex;
+    gap: 3rem;
+}
+
+#current>h2{
+    /* height: auto; */
+    background-image: linear-gradient(45deg,  #35adf3,  #2797d8);
+}
+#current>h2:hover{
+    box-shadow: .1rem .1rem 3rem #8ed6ff;
+}
+#done>h2{
+    background-image: linear-gradient(45deg,  #35e6f3,  #27c6d1);
+}
+#done>h2:hover{
+    box-shadow: .1rem .1rem 3rem #77e3eb;
+}
+
+
+#todo>h2{
+    background-image: linear-gradient(45deg,  #6e35f3,  #5022bb);
+}
+#todo>h2:hover{
+    box-shadow: .1rem .1rem 3rem #8564d3;
+}
+
+.project{
+    position: relative;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 1rem;
+    background-size: contain;
+    background-position: bottom;
+    transition: .1s linear;
+}
+.project:hover{
+    box-shadow: .8rem .8rem 0 #c0e7f9 ;
+
+}
+.projectLogo{
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    background: #1a1a1a;
+    padding: .3rem;
+    border-radius: .3rem;
+}
+.projectTitle{
+    text-align: center;
+    color: white;
+}
+
+.projectDescription{
+    position: absolute;
+    bottom: 0;
+    background: #1a1a1aa2;
+    left: 0;
+    right: 0;
+    /* height: 35%; */
+    direction: ltr;
+    padding: .5rem;
+    color: white;
+}
+.projectBtns{
+    position: absolute;
+    left: -2rem;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-weight: bold;
+}
+
+#messages{
+    position: absolute;
+    top: 2rem;
+    right: 45vw;
+    text-align: center;
+}
+#messages div{
+    display: none;
+}
+
+
+/* footer */
+footer{
+    min-height: 20vh;
+    background-image: linear-gradient(45deg,  #1a1a1a,  #292929);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-top: #35adf3 2px solid;
+    gap: 1rem;
+}
+
+.contact, .statics, .features{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    min-height: 15vh;
+    border-radius: .5rem;
+    transition: .1s linear;
+    background: white;
+    padding: 1rem;
+}
+
+.contact:hover, .features:hover, .statics:hover{
+    box-shadow: 3px 3px 0px 0px  #35adf3;
+}
+.logoPart{
+    /* background: red; */
+    height: 1rem;
+    width: 2rem;
+    margin-top: 1rem;
+    transform: rotateZ(-15deg);
+    z-index: 1;
+}
+
+
+
+
+
+/* elements */
+body{
+    margin: 0;
+    overflow-x: hidden;
+
+}
+
+main div,main p,main h1,main h2,main h3,main h4,main h5,main h6{
+    direction: rtl;
+}
+
+body *{
+    box-sizing: border-box;
+    /* font-family: 'Rubik 80s Fade', cursive; */
+    font-family: 'Prosto One', 'Kufam';
+    /* font-family: 'Kufam'; */
+
+}
+img{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 2rem;
+    pointer-events: none;
+}
+input[type=text]{
+    font-size: 1rem;
+}
+input[type=file]{
+    display: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+button{
+    background-position: center;
+    background-size: contain;
+}
+
+
+::-webkit-scrollbar{width:6px;border-left:1px solid #292929;}
+::-webkit-scrollbar-thumb{background-color: #35adf3;}
+
+
+
+
+/* shared */
+.logged, .makeprofile, .notlogged{
+    display: none;
+}
+.teamEle{
+    display: none;
+}
+.box{
+    /* background-color: #35adf3; */
+    background-image: linear-gradient(135deg,  #35adf3, #1f80b8);
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: .1s linear;
+    cursor: pointer;
+}
+.box:hover{
+    background-color: #1f84be;
+    border-radius: .7rem;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account{
+    display: flex;
+    flex-direction: row;
+    gap: .6rem;
+    justify-content: center;
+    align-items: center;
+    transition: .1s linear;
+    cursor: pointer;
+}
+.accountImg{
+    border-radius: 50%;
+    border: #0a0a0a 1px solid;
+}
+
+.on{
+    background: #1b1b1b;
+    color: white;
+}
+.on:hover{
+    background: #333333;
+}
+
+.red {
+    background: #ff2a2a;
+}
+
+.green {
+    background: #27f060;
+}
+
+.black {
+    background: #1b1b1b;
+}
+
+.white {
+    background: rgb(245, 245, 245);
+}
+
+/* mobile */
+
+@media all and (max-width: 500px){
+    main{
+        flex-direction: column;
+    }
+    body *{
+        font-size: .8rem;
+    }
+    footer{
+        flex-direction: column;
+        gap: .2rem;
+    }
+    .contact, .features, .statics{
+        width: 90vw;
+    }
+      /* leaderboard */
+    .leaderBoard{
+        width: 90vw;
+    }
+    .rankingHeader{
+        height: 2rem;
+    }
+}
+
+
+/* js created */
+
+
+
