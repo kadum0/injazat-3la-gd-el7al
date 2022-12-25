@@ -22,16 +22,22 @@ nav{
 nav button{
     /* 35adf3 */
     /* background-image: linear-gradient(45deg,  #55b2e7,  #29a1e7d5); */
+    /* background-image: linear-gradient(45deg,  rgba(255, 255, 255, 0.74),  rgba(255, 255, 255, 0.534)); */
+    background: rgba(255, 255, 255, 0.24);
     font-size: 1.3rem;
     padding: .3rem;
     border-radius: .3rem;
     cursor: pointer;
-    border: #102a3a 3px solid;
+    border: none;
+    color: white;
+    /* border: #102a3a 3px solid; */
     transition: .1s linear;
 }
 nav button:hover{
     /* background-image: linear-gradient(45deg,  #5d9dc2,  #3391c7d5); */
-    background: #88d1fc;
+    /* background: #3ab7ff70; */
+    /* color: #88d1fc; */
+    background: rgba(255, 255, 255, 0.479);
 
 }
 
@@ -67,7 +73,7 @@ main {
 }
 .injazBox>h2{
     padding: .3rem;
-    display: inline-block;
+    /* display: inline-block; */
     margin: auto;
     border-radius: .3rem;
     transition: .1s linear;
@@ -96,6 +102,7 @@ main {
 
 #todo>h2{
     background-image: linear-gradient(45deg,  #6e35f3,  #5022bb);
+    background-image: linear-gradient(45deg,  #5564e7,  #3945af);
 }
 #todo>h2:hover{
     box-shadow: .1rem .1rem 3rem #8564d3;
@@ -109,6 +116,7 @@ main {
     background-size: contain;
     background-position: bottom;
     transition: .1s linear;
+    font-size: .8rem;
 }
 .project:hover{
     box-shadow: .8rem .8rem 0 #c0e7f9 ;
@@ -145,7 +153,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 #messages{
@@ -155,6 +163,10 @@ main {
     text-align: center;
 }
 #messages div{
+    display: none;
+}
+
+.en{
     display: none;
 }
 
@@ -214,7 +226,7 @@ main div,main p,main h1,main h2,main h3,main h4,main h5,main h6{
 body *{
     box-sizing: border-box;
     /* font-family: 'Rubik 80s Fade', cursive; */
-    font-family: 'Prosto One', 'Kufam';
+    font-family: 'Prosto One', 'Changa';
     /* font-family: 'Kufam'; */
 
 }
@@ -264,6 +276,8 @@ button{
 }
 .box:hover{
     background-color: #1f84be;
+    background: #50bbf8;
+    /* background-image: linear-gradient(135deg,  #78ceff, #1f80b8); */
     border-radius: .7rem;
 }
 .flex{
@@ -287,11 +301,11 @@ button{
 }
 
 .on{
-    background: #1b1b1b;
+    /* background: #1b1b1b; */
     color: white;
 }
 .on:hover{
-    background: #333333;
+    /* background: #333333; */
 }
 
 .red {
