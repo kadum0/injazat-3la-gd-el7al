@@ -94,6 +94,7 @@ main {
 }
 #done>h2{
     background-image: linear-gradient(45deg,  #35e6f3,  #27c6d1);
+    background-image: linear-gradient(45deg,  #35f3ca,  #27d18a);
 }
 #done>h2:hover{
     box-shadow: .1rem .1rem 3rem #77e3eb;
@@ -154,6 +155,11 @@ main {
     flex-direction: column;
     gap: .5rem;
     font-weight: 800;
+    /* background: red; */
+    /* display: inline; */
+}
+.projectBtns a{
+    display: inline;
 }
 
 #messages{
@@ -246,6 +252,7 @@ input[type=file]{
 a{
     text-decoration: none;
     color: black;
+    display: inline-block;
 }
 button{
     background-position: center;
