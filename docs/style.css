@@ -1,8 +1,7 @@
 
-
 /* basic */
-/* header */
 
+/* header */
 header{
     height: 3rem;
     background-image: linear-gradient(135deg,  #1a1a1a,  #333333);
@@ -37,187 +36,34 @@ header button:hover{
 
 /* main */
 
-main {
-    /* height: auto; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    color: white;
-    background-image: linear-gradient(45deg,  #fdfdfd,  #dbdbdb);
-    /* background: red; */
-    padding: 1.2rem;
-    gap: 3rem;
-}
-
-/* home page */
-
-.injazBox{
-    min-height: 15rem;
-    /* background: red; */
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
-    margin: 1rem;
-    border: #292929 1px dashed;
     padding: 1rem;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.733);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-.injazBox>h2{
-    padding: .3rem;
-    /* display: inline-block; */
-    margin: 1rem;
-    border-radius: .3rem;
-    transition: .1s linear;
-}
+    background-image: linear-gradient(135deg,  #f5f5f5, #ffffff);
 
-
-.projects{
-    display: flex;
-    gap: 3rem;
 }
-
-#current>h2{
-    /* height: auto; */
-    background-image: linear-gradient(45deg,  #35adf3,  #2797d8);
-}
-#current>h2:hover{
-    box-shadow: .1rem .1rem 3rem #8ed6ff;
-}
-#done>h2{
-    background-image: linear-gradient(45deg,  #35e6f3,  #27c6d1);
-    background-image: linear-gradient(45deg,  #35f3ca,  #27d18a);
-}
-#done>h2:hover{
-    box-shadow: .1rem .1rem 3rem #77e3eb;
-}
-
-
-#todo>h2{
-    background-image: linear-gradient(45deg,  #6e35f3,  #5022bb);
-    background-image: linear-gradient(45deg,  #5564e7,  #3945af);
-}
-#todo>h2:hover{
-    box-shadow: .1rem .1rem 3rem #8564d3;
-}
-
-.project{
-    position: relative;
-    height: 15rem;
-    width: 15rem;
-    border-radius: 1rem;
-    background-size: contain;
-    background-position: bottom;
-    transition: .1s linear;
-    font-size: .8rem;
-}
-.project:hover{
-    box-shadow: .8rem .8rem 0 #c0e7f9 ;
-}
-
-.containerProjectLogo{
-    position: absolute;
-    height: 3.5rem;
-    width: 3.5rem;
-    top: -2rem;
-    left: -2rem;
-    background: #1a1a1a;
-    padding: .1rem;
-    border-radius: .3rem;
-}
-.projectLogo{
-    position: absolute;
-    top: -2rem;
-    left: 2rem;
-    background: #1a1a1a;
-    padding: .3rem;
-    border-radius: .3rem;
-}
-.projectTitle{
+.section{
+    width: 70vw;
     text-align: center;
     color: white;
-}
-
-.projectDescription{
-    position: absolute;
-    bottom: 0;
-    background: #1a1a1aa2;
-    left: 0;
-    right: 0;
-    /* height: 35%; */
-    direction: ltr;
-    padding: .5rem;
-    color: white;
-}
-.projectBtns{
-    position: absolute;
-    left: -2rem;
-    top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    font-weight: 800;
-    /* background: red; */
-    /* display: inline; */
-}
-.projectBtns a{
-    display: inline;
-}
-
-#messages{
-    position: absolute;
-    top: 2rem;
-    right: 45vw;
-    text-align: center;
-}
-#messages div{
-    display: none;
-}
-
-.en{
-    display: none;
+    padding: 1rem;
+    background-image: linear-gradient(135deg,  #1a1a1a,  #383838);
+    border-radius: 1rem;
 }
 
 
+.imgs{
 
-/* statics page */
-
-#projectsStaticsContainer{
-    margin: 2rem;
-    display: flex;
-    justify-content: space-around;
-    /* justify-content: space-between; */
+}
+.imgs img{
+    height: 6rem;
+    border-radius: .3rem;
 }
 
-.projectStatics{
-    min-height: 15rem;
-    min-width: 15rem;
-    /* background: red; */
-    position: relative;
-    gap: 1rem;
-}
-.projectFeatures{
-    display: flex;
-    flex-direction: column;
-    gap: .1rem;
-}
-
-.feature{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #35adf3;
-    /* gap: 1rem; */
-    /* background: rgba(255, 255, 255, 0.459); */
-    background-image: linear-gradient(45deg,  #1a1a1a,  #292929);
-    background-image: linear-gradient(45deg,  #1a1a1a,  #29292956);
-    background-image: linear-gradient(45deg,  #1a1a1a62,  #292929);
-    /* background-image: linear-gradient(45deg,  #ffffff5e,  #d8d8d849); */
-    border-radius: .5rem;
-    /* gap: 1rem; */
-}
 
 
 /* footer */
@@ -226,6 +72,7 @@ footer{
     background-image: linear-gradient(45deg,  #1a1a1a,  #292929);
 
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -233,7 +80,11 @@ footer{
     gap: 1rem;
 }
 
-.contact, .statics, .features{
+#info{
+    justify-content: space-around;
+    width: 100%;
+}
+.contact, .statics, #addCommentContainer{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -242,23 +93,73 @@ footer{
     border-radius: .5rem;
     transition: .1s linear;
     background: white;
+    background-image: linear-gradient(135deg,  #f5f5f5, #ffffff);
+
     padding: 1rem;
 }
 
-.contact:hover, .features:hover, .statics:hover{
+.contact:hover, .statics:hover{
     box-shadow: 3px 3px 0px 0px  #35adf3;
 }
-.logoPart{
+
+
+#commentsSection{
     /* background: red; */
-    height: 1rem;
-    width: 2rem;
-    margin-top: 1rem;
-    transform: rotateZ(-15deg);
-    z-index: 1;
+    width: 90%;
+    gap: 1rem;
 }
 
+#addCommentContainer{
+    /* background-image: linear-gradient(135deg,  #f5f5f5, #ffffff); */
+    /* flex-direction: row; */
+}
 
+#commentsList{
+    margin-top: 1rem;
+    background-image: linear-gradient(135deg,  #f5f5f5, #ffffff);
+    border-radius: 1rem;
+    min-height: 6rem;
+    /* width: 90%; */
+    text-align: center;
+    /* width: 6rem; */
+    padding: 1rem;
+}
 
+#registeredCommentList, #notregisteredCommentList{
+    /* background: red; */
+    background-image: linear-gradient(135deg,  #eeeeee, #f5f5f5);
+    text-align: center;
+    padding: 1rem;
+}
+.normalComments, .suggestedComments{
+    margin-top: 1rem;
+    background-image: linear-gradient(135deg,  #f5f5f5, #ffffff);
+    border-radius: 1rem;
+    min-height: 6rem;
+    width: 80%;
+
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+.comment{
+    border-radius: .3rem;
+    border: #1a1a1a 1px solid;
+    border: #5f5f5f 1px solid;
+    padding: .3rem;
+    /* display: flex; */
+}
+.comment h5, .comment h6{
+    line-height: 0;
+    padding: 0;
+    margin: .3rem;
+    color: #333333;
+    text-align: start;
+}
+.comment h6{
+    font-size: .5rem;
+    color: #5f5f5f;
+}
 
 
 /* elements */
@@ -335,7 +236,9 @@ button{
     justify-content: center;
     align-items: center;
 }
-
+.en{
+    display: none;
+}
 .account{
     display: flex;
     flex-direction: row;
