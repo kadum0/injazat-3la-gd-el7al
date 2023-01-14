@@ -112,6 +112,14 @@ main {
     background-position: bottom;
     transition: .1s linear;
     font-size: .8rem;
+
+}
+.project a{
+    background-size: contain;
+    background-position: bottom;
+    border-radius: 1rem;
+    overflow: hidden;
+    /* display: block; */
 }
 .project:hover{
     box-shadow: .8rem .8rem 0 #c0e7f9 ;
@@ -138,6 +146,9 @@ main {
 .projectTitle{
     text-align: center;
     color: white;
+    position: absolute;
+    top: 10%;
+    right: 10%;
 }
 
 .projectDescription{
