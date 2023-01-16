@@ -98,6 +98,9 @@ main {
 #todo>h2{
     background-image: linear-gradient(45deg,  #6e35f3,  #5022bb);
     background-image: linear-gradient(45deg,  #5564e7,  #3945af);
+
+    /* may for mode 2 */
+    /* box-shadow: .3rem .3rem 6rem #ffffff; */
 }
 #todo>h2:hover{
     box-shadow: .1rem .1rem 3rem #8564d3;
@@ -178,13 +181,17 @@ main {
 }
 
 #messages{
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     top: 2rem;
     right: 45vw;
     text-align: center;
 }
 #messages div{
     display: none;
+    background: #16587e;
+    background-image: linear-gradient(45deg,  #16587e,  #34769c);
+
 }
 
 .en{
@@ -268,6 +275,66 @@ footer{
     z-index: 1;
 }
 
+
+
+#commentsSection{
+    /* background: red; */
+    width: 90%;
+    gap: 1rem;
+}
+
+#addCommentContainer{
+    /* background-image: linear-gradient(135deg,  #f5f5f5, #ffffff); */
+    /* flex-direction: row; */
+    color: white;
+}
+
+#commentsList{
+    margin-top: 1rem;
+    background-image: linear-gradient(135deg,  #f5f5f5, #ffffff);
+    border-radius: 1rem;
+    min-height: 6rem;
+    /* width: 90%; */
+    text-align: center;
+    /* width: 6rem; */
+    padding: 1rem;
+}
+
+#registeredCommentList, #notregisteredCommentList{
+    /* background: red; */
+    background-image: linear-gradient(135deg,  #eeeeee, #f5f5f5);
+    text-align: center;
+    padding: 1rem;
+}
+.normalComments, .suggestedComments{
+    margin-top: 1rem;
+    background-image: linear-gradient(135deg,  #f5f5f5, #ffffff);
+    border-radius: 1rem;
+    min-height: 6rem;
+    width: 80%;
+
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+.comment{
+    border-radius: .3rem;
+    border: #1a1a1a 1px solid;
+    border: #5f5f5f 1px solid;
+    padding: .3rem;
+    /* display: flex; */
+}
+.comment h5, .comment h6{
+    line-height: 0;
+    padding: 0;
+    margin: .3rem;
+    color: #333333;
+    text-align: start;
+}
+.comment h6{
+    font-size: .5rem;
+    color: #5f5f5f;
+}
 
 
 
@@ -388,7 +455,7 @@ button{
 /* mobile */
 
 @media all and (max-width: 500px){
-    main{
+    main, .projects{
         flex-direction: column;
     }
     body *{

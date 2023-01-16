@@ -201,6 +201,14 @@
             </div>
         </div>
 
+
+        <div id="messages">
+            <div id="greenMessage" class="box green">
+                <img src="./imgs/loading-gif.gif" alt="">
+            </div>
+
+            <div id="redMessage" class="box red">error, no valid data, full the rest</div>
+        </div>
     </main>
 
     <footer>
@@ -210,7 +218,7 @@
             <h2 class="en">contact</h2>
             <span>
                 <a href="https://www.instagram.com/kadum_0/" target="_blank"><img src="./imgs/instagram-logo.png"></a>
-                <a href="t.me/kadum0" target="_blank">
+                <a href="https://www.t.me/git4v" target="_blank">
                     <img src="./imgs/telegram-logo.png">
                 </a>
                 <a href="https://www.github.com/kadum2" target="_blank">
@@ -225,10 +233,113 @@
 
         </div>
 
-        <div id="sercretCoder">
+        <!-- <div id="sercretCoder">
             <input type="text" placeholder="comment" id="comment">
             <button id="sendComment" class="box">send</button>
+        </div> -->
+
+        <div id="commentsSection">
+            <div id="addCommentContainer">
+                <h2>رايك الجميل بس مو اجمل منك</h2>
+                <div class="flex">
+                    <div class="flex" style="flex-direction: column;">
+                        <input type="text" placeholder="your name" id="commentWriter">
+                        <textarea name="" id="commentContent" cols="30" rows="10"
+                            placeholder="write comment"></textarea>
+                    </div>
+                    <div class="flex" style="flex-direction: column;">
+
+                        <div>
+                            <label for="normal" class="box contained">تعليق</label>
+                            <input type="radio" id="normal" name="radio" value="normal" checked
+                                onchange="uncheckOther(this)">
+
+                        </div>
+                        <span>
+                            <label for="suggest" class="box contained">اقتراح</label>
+                            <input type="radio" id="suggest" name="radio" value="suggest" onchange="uncheckOther(this)">
+                        </span>
+                    </div>
+
+                    <button id="sendComment" class="box">ارسال</button>
+                </div>
+            </div>
+
+
+            <div id="commentsList">
+                <p>تعليقات</p>
+
+                <div id="chooseCommentsType">
+                    <button class="box on" id="registeredCommentsDi">مسجل</button>
+                    <button class="box" id="notRegisteredCommentsDi">غير مسجل</button>
+                </div>
+
+                <div id="registeredCommentList">
+                    <p>مسجل</p>
+                    <div class="flex" style="gap: 1rem;">
+                        <div class="normalComments">
+                            <p>تعليقات</p>
+
+                            <div id="registeredNormal" class="flex" style="gap: 1rem; flex-direction: column;">
+                                <!-- <div class="comment">
+                                    <h5>commenter</h5>
+                                    <p>comment</p>
+                                    <h6> comment date</h6>
+                                </div> -->
+
+                            </div>
+
+                        </div>
+
+                        <div class="suggestedComments">
+                            <p>اقتراحات</p>
+                            <div id="registeredSuggest" class="flex" style="gap: 1rem; flex-direction: column;">
+                                <!-- <div class="comment">
+                                    <h5>commenter</h5>
+                                    <p>actual comment</p>
+                                    <h6> comment date</h6>
+                                </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="notRegisteredCommentList" style="display: none;">
+                    <p>غير مسجل</p>
+                    <div class="flex" style="gap: 1rem;">
+                        <div class="normalComments">
+                            <p>تعليقات</p>
+
+                            <div id="notRegisteredNormal" class="flex" style="gap: 1rem; flex-direction: column;">
+                                <!-- <div class="comment">
+                                    <h5>commenter</h5>
+                                    <p>comment</p>
+                                    <h6> comment date</h6>
+                                </div> -->
+
+                            </div>
+
+                        </div>
+
+                        <div class="suggestedComments">
+                            <p>اقتراحات</p>
+                            <div id="notRegisteredSuggest" class="flex" style="gap: 1rem; flex-direction: column;">
+                                <!-- <div class="comment">
+                                    <h5>commenter</h5>
+                                    <p>actual comment</p>
+                                    <h6> comment date</h6>
+                                </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
+
     </footer>
 
     <script src="./script.js" type="module"></script>

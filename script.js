@@ -27,7 +27,7 @@ const bygreenConfig = {
 
 const bygreen = initializeApp(bygreenConfig, 'bygreen');
 const bygreenDb = getFirestore(bygreen)
-
+const bygreenAuth = getAuth(bygreen)
 
 const injazatConfig = {
     apiKey: "AIzaSyDL02ar9hgx6XBNHGV-YGnWA2qVlOvqAac",
@@ -40,14 +40,17 @@ const injazatConfig = {
     };
 
 
-    const injazat = initializeApp(bygreenConfig, 'bygreen');
-    const injazatDb = getFirestore(bygreen)
+    const injazat = initializeApp(injazatConfig, 'injazat');
+    const injazatDb = getFirestore(injazat)
+
+
+    const currentDate = new Date()
+    let authUser 
 
 
 
 
-
-// ui-js
+////////////// ui-js
 document.querySelector('#translateToEn').addEventListener('click', (ev)=>{
     ev.target.classList.toggle('on')
     if(ev.target.classList.contains('on')){
@@ -61,87 +64,221 @@ document.querySelector('#translateToEn').addEventListener('click', (ev)=>{
     }
 })
 
+// comments di
+registeredCommentsDi.addEventListener('click', ev=>{
+    ev.target.classList.toggle('on')
+    if(ev.target.classList.contains('on')){
+        document.querySelector('#notRegisteredCommentsDi').classList.remove('on')
+
+        document.querySelector('#registeredCommentList').style.display = 'block'
+        document.querySelector('#notRegisteredCommentList').style.display = 'none'
+    }
+})
+notRegisteredCommentsDi.addEventListener('click', ev=>{
+    ev.target.classList.toggle('on')
+    if(ev.target.classList.contains('on')){
+        document.querySelector('#registeredCommentsDi').classList.remove('on')
+
+        document.querySelector('#registeredCommentList').style.display = 'none'
+        document.querySelector('#notRegisteredCommentList').style.display = 'block'
+    }
+})
 
 
 
-// getting data; 
+
+///////////// getting data; 
 
 // containers; may no need to them; ??
 let routes
 let pins
 
-window.onload=()=>{
+onAuthStateChanged(bygreenAuth, async(user)=>{
 
-    // git4v
-    getDocs(collection(bygreenDb, 'users')).then((data)=>{
+
+    document.querySelector('#greenMessage').style.display = 'block'
+    // document.querySelector('#greenMessage').textContent = 'getting data'
+
+
+    if(user){
+        console.log('from auth ', user)
+        authUser = user
+    }
+
+
+    ///////////////////to fix; minimal
+    // // git4v
+    // getDocs(collection(bygreenDb, 'users')).then((data)=>{
+    //     let docs = []
+    //         data.docs.forEach(doc=>{
+    //             docs.push({...doc.data(), id: doc.id})
+    //         })
+    //         console.log('accounts; ', docs)
+    //         document.querySelector('#accountsCounter').textContent = docs.length
+
+    //         // count the contributions
+    // })
+
+
+    // // publicline
+    // getDocs(collection(bygreenDb, 'routes')).then((data)=>{
+    //     let docs = []
+    //         data.docs.forEach(doc=>{
+    //             docs.push({...doc.data(), id: doc.id})
+    //         })
+    //         routes = docs
+    //         console.log('routes; ', routes)
+
+    //         document.querySelector('#confirmedRoutesCounter').textContent = docs.length
+
+    //         let votes = 0
+    //         docs.forEach(route=> votes += (route.upvotes.length + route.downvotes.length))
+    //         document.querySelector('#votesCounter').innerHTML = votes
+
+    //         document.querySelector('#completedRoutesCounter').textContent = routes.filter(route=>route.start && route.end).length
+    //         document.querySelector('#uncompletedRoutesCounter').textContent = routes.filter(route=>!route.start || !route.end).length
+
+    //         // the sured routes; later
+    // })
+
+    // getDocs(collection(bygreenDb, 'unroutes')).then((data)=>{
+    //     let docs = []
+    //         data.docs.forEach(doc=>{
+    //             docs.push({...doc.data(), id: doc.id})
+    //         })
+    //         console.log('unroutes; ', docs)
+
+    //         document.querySelector('#unconfirmedRoutesCounter').textContent = docs.length
+    // })
+
+    // // bygreen
+    // getDocs(collection(bygreenDb, 'pins')).then((data)=>{
+    //     let docs = []
+    //         data.docs.forEach(doc=>{
+    //             docs.push({...doc.data(), id: doc.id})
+    //         })
+    //         pins = docs
+    //         console.log('pins', pins)
+
+    //         document.querySelector('#redPinsCounter').textContent = pins.filter(pin=>!pin.afterImgs).length
+    //         document.querySelector('#greenPinsCounter').textContent = pins.filter(pin=>pin.afterImgs).length
+    //         document.querySelector('#yellowPinsCounter').textContent = pins.filter(pin=>pin.next).length
+
+    //         // the planted plants; later
+    // })
+
+    // getDocs(collection(bygreenDb, 'shop')).then((data)=>{
+    //     let docs = []
+    //         data.docs.forEach(doc=>{
+    //             docs.push({...doc.data(), id: doc.id})
+    //         })
+    //         // pins = docs
+    //         console.log('shops', docs)
+
+    //         document.querySelector('#shopsCounter').textContent = docs.length
+    // })
+
+
+
+    // comments
+    
+    await getDocs(collection(injazatDb, 'publicline-comments')).then((data)=>{
         let docs = []
             data.docs.forEach(doc=>{
                 docs.push({...doc.data(), id: doc.id})
             })
-            console.log('accounts; ', docs)
-            document.querySelector('#accountsCounter').textContent = docs.length
-
+            console.log('comments; ', docs)
             // count the contributions
-    })
 
+            let registeredNormal = docs.filter(doc=>doc.registered && !doc.suggest)
+            let registeredSuggest = docs.filter(doc=>doc.suggest && doc.suggest)
+            let notregisteredNormal = docs.filter(doc=>!doc.registered && !doc.suggest)
+            let notregisteredSuggest= docs.filter(doc=>!doc.registered && doc.suggest )
 
-    // publicline
-    getDocs(collection(bygreenDb, 'routes')).then((data)=>{
-        let docs = []
-            data.docs.forEach(doc=>{
-                docs.push({...doc.data(), id: doc.id})
+            let lists = []
+            lists.push(registeredNormal)
+            lists.push(registeredSuggest)
+            lists.push(notregisteredNormal)
+            lists.push(notregisteredSuggest)
+
+            let registeredNormalCI = 0
+            let registeredSuggestCI = 0
+            let normalCI = 0
+            let suggestCI = 0
+
+            lists.forEach((list)=>{
+                list.sort((a, b) => {
+                    const dateA = new Date(a.date);
+                    const dateB = new Date(b.date);
+                    // return dateA.getTime() - dateB.getTime();
+                    return dateB.getTime() - dateA.getTime();
+                });
+
+                list.forEach(regNor=>{
+                    console.log(regNor)
+                    let name 
+                    if(list == registeredNormal){
+                        name = 'registeredNormal'
+                    }else if(list == registeredSuggest){
+                        name = 'registeredSuggest'
+                    }else if(list == notregisteredNormal){
+                        name = 'notRegisteredNormal'
+                    }else if(list == notregisteredSuggest){
+                        name = 'notRegisteredSuggest'
+                    }
+
+                document.querySelector('#'+ name).innerHTML+= `
+                <div class="comment">
+                    <h5>${regNor.writer}</h5>
+                    <p>${regNor.comment}</p>
+                    <h6>${regNor.date}</h6>
+                </div>
+                `
+                })
             })
-            routes = docs
-            console.log('routes; ', routes)
-
-            document.querySelector('#confirmedRoutesCounter').textContent = docs.length
-
-            let votes = 0
-            docs.forEach(route=> votes += (route.upvotes.length + route.downvotes.length))
-            document.querySelector('#votesCounter').innerHTML = votes
-
-            document.querySelector('#completedRoutesCounter').textContent = routes.filter(route=>route.start && route.end).length
-            document.querySelector('#uncompletedRoutesCounter').textContent = routes.filter(route=>!route.start || !route.end).length
-
-            // the sured routes; later
     })
 
-    getDocs(collection(bygreenDb, 'unroutes')).then((data)=>{
-        let docs = []
-            data.docs.forEach(doc=>{
-                docs.push({...doc.data(), id: doc.id})
-            })
-            console.log('unroutes; ', docs)
+    console.log("got all the data")
+    document.querySelector('#greenMessage').style.display = 'none'
 
-            document.querySelector('#unconfirmedRoutesCounter').textContent = docs.length
-    })
+})
 
-    // bygreen
-    getDocs(collection(bygreenDb, 'pins')).then((data)=>{
-        let docs = []
-            data.docs.forEach(doc=>{
-                docs.push({...doc.data(), id: doc.id})
-            })
-            pins = docs
-            console.log('pins', pins)
 
-            document.querySelector('#redPinsCounter').textContent = pins.filter(pin=>!pin.afterImgs).length
-            document.querySelector('#greenPinsCounter').textContent = pins.filter(pin=>pin.afterImgs).length
-            document.querySelector('#yellowPinsCounter').textContent = pins.filter(pin=>pin.next).length
 
-            // the planted plants; later
-    })
+////////////sending
 
-    getDocs(collection(bygreenDb, 'shop')).then((data)=>{
-        let docs = []
-            data.docs.forEach(doc=>{
-                docs.push({...doc.data(), id: doc.id})
-            })
-            // pins = docs
-            console.log('shops', docs)
+document.querySelector('#sendComment').addEventListener('click', (ev)=>{
 
-            document.querySelector('#shopsCounter').textContent = docs.length
-    })
+    console.log('comment, ', document.querySelector('#commentContent').value, )
+// check if written comment; 
+if(document.querySelector('#commentContent').value){
+
+    console.log("will send a comment")
+    document.querySelector('#greenMessage').style.display = 'block'
+    document.querySelector('#greenMessage').textContent = 'sending'
+
+
+    addDoc(collection(injazatDb, 'publicline-comments'), {
+        writer: document.querySelector('#commentWriter').value,
+        comment: document.querySelector('#commentContent').value,
+        suggest: document.querySelector('#suggest').checked,
+        date: `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`,
+        registered: authUser?true:false
+    }).then(data=>{
+        console.log("comment sent")
+        document.querySelector('#greenMessage').textContent = 'sent'
+        location.reload()
+
+        setTimeout(() => {
+            document.querySelector('#greenMessage').style.display = 'none'
+        }, 1000);
+
+
+        window.location.reload();
+    }
+    )
 }
+})
+
 
 
