@@ -19,7 +19,7 @@ header{
 
 nav{
 }
-header button{
+nav a{
     background: rgba(255, 255, 255, 0.24);
     font-size: 1.3rem;
     padding: .3rem;
@@ -29,7 +29,7 @@ header button{
     color: white;
     transition: .1s linear;
 }
-header button:hover{
+nav a:hover{
     background: rgba(255, 255, 255, 0.479);
 
 }
@@ -480,5 +480,14 @@ button{
 
 /* js created */
 
-
+.rotate {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
 

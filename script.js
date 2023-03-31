@@ -86,18 +86,29 @@ notRegisteredCommentsDi.addEventListener('click', ev=>{
 
 
 
-
 ///////////// getting data; 
 
 // containers; may no need to them; ??
 let routes
 let pins
 
+let loadingImages = [
+    './imgs/wonder.gif', 
+    './imgs/wonder1.png', 
+    './imgs/wonder2.png', 
+    './imgs/wonder3.png', 
+    './imgs/wonder4.png', 
+    './imgs/wonder5.png', 
+    './imgs/wonder6.png', 
+    './imgs/wonder7.png', 
+    './imgs/wonder8.png'
+]
+
 onAuthStateChanged(bygreenAuth, async(user)=>{
 
-
-    document.querySelector('#greenMessage').style.display = 'block'
-    // document.querySelector('#greenMessage').textContent = 'getting data'
+    document.querySelector('#loadingMessage').querySelector('img').setAttribute('src', loadingImages[Math.floor(Math.random() * loadingImages.length)])
+    document.querySelector('#loadingMessage').style.display = 'block'
+    // document.querySelector('#loadingMessage').textContent = 'getting data'
 
 
     if(user){
@@ -182,7 +193,7 @@ onAuthStateChanged(bygreenAuth, async(user)=>{
 
     // comments
     
-    await getDocs(collection(injazatDb, 'publicline-comments')).then((data)=>{
+    await getDocs(collection(injazatDb, 'injazat-comments')).then((data)=>{
         let docs = []
             data.docs.forEach(doc=>{
                 docs.push({...doc.data(), id: doc.id})
@@ -239,7 +250,7 @@ onAuthStateChanged(bygreenAuth, async(user)=>{
     })
 
     console.log("got all the data")
-    document.querySelector('#greenMessage').style.display = 'none'
+    document.querySelector('#loadingMessage').style.display = 'none'
 
 })
 
@@ -254,8 +265,8 @@ document.querySelector('#sendComment').addEventListener('click', (ev)=>{
 if(document.querySelector('#commentContent').value){
 
     console.log("will send a comment")
-    document.querySelector('#greenMessage').style.display = 'block'
-    document.querySelector('#greenMessage').textContent = 'sending'
+    document.querySelector('#loadingMessage').style.display = 'block'
+    document.querySelector('#loadingMessage').textContent = 'sending'
 
 
     addDoc(collection(injazatDb, 'publicline-comments'), {
@@ -266,11 +277,11 @@ if(document.querySelector('#commentContent').value){
         registered: authUser?true:false
     }).then(data=>{
         console.log("comment sent")
-        document.querySelector('#greenMessage').textContent = 'sent'
+        document.querySelector('#loadingMessage').textContent = 'sent'
         location.reload()
 
         setTimeout(() => {
-            document.querySelector('#greenMessage').style.display = 'none'
+            document.querySelector('#loadingMessage').style.display = 'none'
         }, 1000);
 
 
